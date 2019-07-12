@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.preference.PreferenceManager
 import androidx.core.content.edit
 import kotlinx.android.synthetic.main.activity_result.*
+import java.lang.Thread.sleep
 
 class ResultActivity : AppCompatActivity() {
 
@@ -50,6 +51,16 @@ class ResultActivity : AppCompatActivity() {
             2 -> resultLabel.setText(R.string.result_lose)
         }
 
+        if(gameResult == 1){
+            sleep(2000)
+            resultLabel.setText("やっぱり！コンピュータの勝ちです")
+            when(myHand){
+                0 -> comHandImage.setImageResource(R.drawable.com_pa)
+                1 -> comHandImage.setImageResource(R.drawable.com_gu)
+                2 -> comHandImage.setImageResource(R.drawable.com_choki)
+            }
+        }
+
         backButton.setOnClickListener { finish() }
 
         saveData(myHand, comHand, gameResult)
@@ -86,7 +97,9 @@ class ResultActivity : AppCompatActivity() {
         val lastComHand = pref.getInt("LAST_COM_HAND", 0)
         val beforeLastComHand = pref.getInt("BEFORE_LAST_COM_HAND", 0)
         val gameResult = pref.getInt("GAME_RESULT", -1)
-        
+
+        textView2.text = gameCount.toString()
+
         if(gameCount == 1){
             if(gameResult == 2){
                 while(lastComHand == hand){
