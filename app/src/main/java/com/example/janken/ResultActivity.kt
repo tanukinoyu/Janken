@@ -1,3 +1,11 @@
+/**
+ * 問題　getHandメソッド内にあるif文の条件分岐が、gameCountが１の時となっているが、
+ * 現状ではgameCountはアプリを再起動しない限りは増え続けてしまうため、この条件分岐はすぐに
+ * 意味の無いものになってしまっています。
+ * そこで、『gameCountが２以上かつCOMが負けた』際にgameCountをリセットするようにし、
+ * 上記の変更が視覚的にわかりやすくなるようにResultActivity内でテキストビューにてgameCountを表示させよ
+ */
+
 package com.example.janken
 
 import androidx.appcompat.app.AppCompatActivity
@@ -68,8 +76,13 @@ class ResultActivity : AppCompatActivity() {
             else -> 0
         }
 
-        val editor = pref.edit {
-            putInt("GAME_COUNT", gameCount + 1)
+        val gameCountResetable: Int = when{
+            gameCount >= 2 && gameResult == 1 -> 0
+            else -> gameCount + 1
+        }
+
+        pref.edit {
+            putInt("GAME_COUNT", gameCountResetable)
             putInt("WINNING_STREAK_COUNT", edtWinningStreakCount)
             putInt("LAST_MY_HAND", myHand)
             putInt("LAST_COM_HAND", comHand)
