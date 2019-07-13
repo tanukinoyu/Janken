@@ -36,4 +36,50 @@
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/choki"/>
+    <TableLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/choki" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp">
+
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:text="@string/totalGameCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/totalGameCountText"
+                    android:textAlignment="textEnd" android:textSize="18sp" android:textStyle="bold"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView
+                    android:text="@string/winCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/winCountText" android:textAlignment="textEnd"
+                    android:textSize="18sp" android:textStyle="bold"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView
+                    android:text="@string/winRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/winRateText" android:textAlignment="textEnd"
+                    android:textSize="18sp" android:textStyle="bold"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView
+                    android:text="@string/myWinningStreakCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/myWinningStreakCountText"
+                    android:textAlignment="textEnd" android:textSize="18sp" android:textStyle="bold"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView
+                    android:text="@string/maxWinningStreakCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/maxWinningStreakCountText"
+                    android:textAlignment="textEnd" android:textSize="18sp" android:textStyle="bold"/>
+        </TableRow>
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

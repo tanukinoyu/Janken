@@ -53,16 +53,6 @@ class ResultActivity : AppCompatActivity() {
             2 -> resultLabel.setText(R.string.result_lose)
         }
 
-        if(gameResult == 1){
-            sleep(2000)
-            resultLabel.setText("やっぱり！コンピュータの勝ちです")
-            when(myHand){
-                0 -> comHandImage.setImageResource(R.drawable.com_pa)
-                1 -> comHandImage.setImageResource(R.drawable.com_gu)
-                2 -> comHandImage.setImageResource(R.drawable.com_choki)
-            }
-        }
-
         backButton.setOnClickListener { finish() }
 
         saveData(myHand, comHand, gameResult)
@@ -74,6 +64,10 @@ class ResultActivity : AppCompatActivity() {
         val winningStreakCount = pref.getInt("WINNING_STREAK_COUNT", 0)
         val lastComHand = pref.getInt("LAST_COM_HAND", 0)
         val lastGameResult = pref.getInt("GAME_RESULT", -1)
+        val totalGameCount = pref.getInt("TOTAL_GAME_COUNT", 0)
+        val winCount = pref.getInt("WIN_COUNT", 0)
+        var myWinningStreakCount = pref.getInt("MY_WINNING_STREAK_COUNT", 0)
+        val maxWinningStreakCount = pref.getInt("MAX_WINNING_STREAK_COUNT", 0)
 
         val edtWinningStreakCount: Int = when{
             lastGameResult == 2 && gameResult == 2 ->
@@ -87,7 +81,34 @@ class ResultActivity : AppCompatActivity() {
             putInt("LAST_MY_HAND", myHand)
             putInt("LAST_COM_HAND", comHand)
             putInt("BEFORE_LAST_COM_HAND", lastComHand)
-            putInt("GAME_RESULT", gameResult) }
+            putInt("GAME_RESULT", gameResult)
+            putInt("TOTAL_GAME_COUNT", gameCount + 1)
+            putInt("WIN_COUNT",
+                if(gameResult == 1)
+                    winCount + 1
+                else
+                    winCount)
+            putInt("MY_WINNING_STREAK_COUNT",
+                if(gameResult == 1)
+                    myWinningStreakCount + 1
+                else if(lastGameResult == 1 && gameResult == 0)
+                    myWinningStreakCount
+                else if(lastGameResult == 0 && gameResult == 0)
+                    myWinningStreakCount
+                else
+                    0
+            )
+        }
+        myWinningStreakCount = pref.getInt("MY_WINNING_STREAK_COUNT", 0)
+        pref.edit{
+            putInt("MAX_WINNING_STREAK_COUNT",
+                if(myWinningStreakCount >= maxWinningStreakCount)
+                    myWinningStreakCount
+                else
+                    maxWinningStreakCount
+            )
+        }
+
     }
 
     private fun getHand(): Int {
