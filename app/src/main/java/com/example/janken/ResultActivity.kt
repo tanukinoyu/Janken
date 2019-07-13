@@ -1,3 +1,5 @@
+// Hideさんの問題作成用
+
 package com.example.janken
 
 import androidx.appcompat.app.AppCompatActivity
