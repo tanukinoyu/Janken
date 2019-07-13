@@ -79,7 +79,7 @@ class ResultActivity : AppCompatActivity() {
             else -> 0
         }
 
-        val editor = pref.edit {
+        pref.edit {
             putInt("GAME_COUNT", gameCount + 1)
             putInt("WINNING_STREAK_COUNT", edtWinningStreakCount)
             putInt("LAST_MY_HAND", myHand)
