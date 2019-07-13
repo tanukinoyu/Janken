@@ -1,4 +1,4 @@
-// Hideさんの問題作成用
+// Hideさんの問題作成用_
 
 package com.example.janken
 
