@@ -6,4 +6,5 @@
     <string name="result_lose">コンピュータの勝ちです</string>
     <string name="result_draw">あいこです</string>
     <string name="count">ゲーム　〇回目</string>
+    <string name="play">●PLAY GAME !!●</string>
 </resources>

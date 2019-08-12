@@ -98,8 +98,6 @@ class ResultActivity : AppCompatActivity() {
         val beforeLastComHand = pref.getInt("BEFORE_LAST_COM_HAND", 0)
         val gameResult = pref.getInt("GAME_RESULT", -1)
 
-        textView2.text = gameCount.toString()
-
         if(gameCount == 1){
             if(gameResult == 2){
                 while(lastComHand == hand){
