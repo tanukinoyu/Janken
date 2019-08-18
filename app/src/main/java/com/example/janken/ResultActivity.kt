@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.preference.PreferenceManager
 import androidx.core.content.edit
 import kotlinx.android.synthetic.main.activity_result.*
-import java.lang.Thread.sleep
 
 class ResultActivity : AppCompatActivity() {
 
@@ -49,16 +48,6 @@ class ResultActivity : AppCompatActivity() {
             0 -> resultLabel.setText(R.string.result_draw)
             1 -> resultLabel.setText(R.string.result_win)
             2 -> resultLabel.setText(R.string.result_lose)
-        }
-
-        if(gameResult == 1){
-            sleep(2000)
-            resultLabel.setText("やっぱり！コンピュータの勝ちです")
-            when(myHand){
-                0 -> comHandImage.setImageResource(R.drawable.com_pa)
-                1 -> comHandImage.setImageResource(R.drawable.com_gu)
-                2 -> comHandImage.setImageResource(R.drawable.com_choki)
-            }
         }
 
         backButton.setOnClickListener { finish() }

@@ -6,45 +6,51 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
+    <FrameLayout
+            android:layout_width="392dp"
+            android:layout_height="303dp"
+            android:id="@+id/frameLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+    >
+
+        <VideoView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/videoView"/>
+    </FrameLayout>
     <ImageButton
             android:layout_width="100dp"
             android:layout_height="100dp" app:srcCompat="@drawable/choki"
             android:id="@+id/choki" android:scaleType="fitCenter" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/frameLayout2"/>
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+            app:layout_constraintBottom_toTopOf="@+id/checkBox" app:layout_constraintHorizontal_bias="0.5"
+            android:background="@drawable/textshape"/>
     <ImageButton
             android:layout_width="100dp"
             android:layout_height="100dp" app:srcCompat="@drawable/gu" android:id="@+id/gu"
             android:scaleType="fitCenter"
             app:layout_constraintEnd_toStartOf="@+id/choki" android:layout_marginEnd="8dp"
             app:layout_constraintTop_toTopOf="@+id/choki" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginStart="8dp" android:background="@drawable/textshape"/>
     <ImageButton
             android:layout_width="100dp"
             android:layout_height="100dp" app:srcCompat="@drawable/pa"
             android:id="@+id/pa" android:scaleType="fitCenter" app:layout_constraintStart_toEndOf="@+id/choki"
             android:layout_marginStart="8dp"
             app:layout_constraintTop_toTopOf="@+id/choki" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"/>
-    <TextView
-            android:text="@string/janken_text"
+            android:layout_marginEnd="8dp" android:background="@drawable/textshape"/>
+    <CheckBox
+            android:text="@string/checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/checkBox"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/choki"/>
-    <FrameLayout
-            android:layout_width="392dp"
-            android:layout_height="303dp"
-            android:id="@+id/frameLayout2" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp">
-
-        <VideoView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/videoView2"/>
-    </FrameLayout>
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/choki"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" android:textSize="24sp" android:textStyle="bold"
+            android:background="@drawable/textshape"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

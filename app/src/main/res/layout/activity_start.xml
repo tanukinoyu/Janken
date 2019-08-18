@@ -26,7 +26,7 @@
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/imageView2"
             app:layout_constraintHorizontal_bias="0.5" android:text="@string/play"
             android:textColor="@android:color/black" android:textStyle="bold" android:textAlignment="center"
-            android:typeface="sans" android:fontFamily="casual" android:textSize="36sp"
+            android:typeface="sans" android:fontFamily="sans-serif" android:textSize="36sp"
             android:gravity="center_vertical" android:layout_marginStart="16dp" android:layout_marginEnd="16dp"/>
     <ImageView
             android:layout_width="wrap_content"

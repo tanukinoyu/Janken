@@ -7,7 +7,6 @@ import android.media.SoundPool
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.view.Gravity
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
@@ -24,24 +23,20 @@ class StartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
 
-        startText.blink()
-
         imageView.setOnClickListener{
-            soundPool.play(soundResId, 1.0f, 1.0f, 1, 0, 1.0f)
-            delayIntent(this,savedInstanceState)
+            delayIntent(it)
         }
         startText.setOnClickListener{
-            soundPool.play(soundResId, 1.0f, 1.0f, 1, 0, 1.0f)
-            delayIntent(this,savedInstanceState)
+            delayIntent(it)
         }
         imageView2.setOnClickListener{
-            soundPool.play(soundResId, 1.0f, 1.0f, 1, 0, 1.0f)
-            delayIntent(this,savedInstanceState)
+            delayIntent(it)
         }
     }
 
     override fun onResume() {
         super.onResume()
+        startText.blink()
         val audioAttributes = AudioAttributes.Builder()
             .setUsage(AudioAttributes.USAGE_ALARM)
             .build()
@@ -52,29 +47,28 @@ class StartActivity : AppCompatActivity() {
         soundResId = soundPool.load(this, R.raw.hondaplaysound, 1)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onPause() {
+        super.onPause()
         soundPool.release()
     }
-}
 
-fun View.blink(times: Int = Animation.INFINITE){
-    startAnimation(AlphaAnimation(0.0f, 1.0f).apply {
-        duration = 200L
-        startOffset = 20L
-        repeatMode = Animation.REVERSE
-        repeatCount = times
-    })
-}
-
-fun delayIntent(context: Context,savedInstanceState: Bundle?){
-    Toast.makeText(context, "GAME START !!", Toast.LENGTH_SHORT).also {
-        it.setGravity(Gravity.CENTER, 0, 0)
-        it.setMargin(10.0f, 10.0f)
-        it.show()
+    fun View.blink(times: Int = Animation.INFINITE, du: Long = 200L){
+        startAnimation(AlphaAnimation(0.0f, 1.0f).apply {
+            duration = du
+            startOffset = 20L
+            repeatMode = Animation.REVERSE
+            repeatCount = times
+        })
     }
-    Handler().postDelayed(Runnable {
-        val intent = Intent(context, MainActivity::class.java)
-        startActivity(context,intent,savedInstanceState)
-    },2000)
+
+    fun delayIntent(view: View?){
+        view?.setEnabled(false)
+        soundPool.play(soundResId, 1.0f, 1.0f, 1, 0, 1.0f)
+        startText.blink(30, 10L)
+        Handler().postDelayed(Runnable {
+            view?.setEnabled(true)
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        },2000)
+    }
 }
