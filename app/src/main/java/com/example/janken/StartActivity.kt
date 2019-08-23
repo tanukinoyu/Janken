@@ -3,6 +3,7 @@ package com.example.janken
 import android.content.Context
 import android.content.Intent
 import android.media.AudioAttributes
+import android.media.AudioManager
 import android.media.SoundPool
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -38,12 +39,13 @@ class StartActivity : AppCompatActivity() {
         super.onResume()
         startText.blink()
         val audioAttributes = AudioAttributes.Builder()
-            .setUsage(AudioAttributes.USAGE_ALARM)
+            .setUsage(AudioAttributes.USAGE_MEDIA)
             .build()
         soundPool = SoundPool.Builder()
             .setMaxStreams(1)
             .setAudioAttributes(audioAttributes)
             .build()
+        setVolumeControlStream(AudioManager.STREAM_MUSIC)
         soundResId = soundPool.load(this, R.raw.hondaplaysound, 1)
     }
 
@@ -67,6 +69,7 @@ class StartActivity : AppCompatActivity() {
         startText.blink(30, 10L)
         Handler().postDelayed(Runnable {
             view?.setEnabled(true)
+            soundPool.release()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         },2000)

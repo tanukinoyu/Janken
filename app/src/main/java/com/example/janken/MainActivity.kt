@@ -2,6 +2,7 @@ package com.example.janken
 
 import android.content.Intent
 import android.media.AudioAttributes
+import android.media.AudioManager
 import android.media.SoundPool
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         videoView.setVideoPath("android.resource://" + this.getPackageName() + "/" + R.raw.hondajanken)
-        videoView.start()
 
         gu.setOnClickListener{onJankenButtonTapped(it)}
         choki. setOnClickListener{onJankenButtonTapped(it)}
@@ -34,14 +34,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        videoView.start()
         val audioAttributes = AudioAttributes.Builder()
-            .setUsage(AudioAttributes.USAGE_ALARM)
+            .setUsage(AudioAttributes.USAGE_MEDIA)
             .build()
         soundPool = SoundPool.Builder()
             .setMaxStreams(1)
             .setAudioAttributes(audioAttributes)
             .build()
-        soundPool.release()
+        setVolumeControlStream(AudioManager.STREAM_MUSIC)
         soundResId = soundPool.load(this, R.raw.hondapon, 1)
     }
 

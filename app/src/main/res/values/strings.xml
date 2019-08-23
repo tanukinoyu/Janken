@@ -2,10 +2,12 @@
     <string name="app_name">Janken</string>
     <string name="janken_text">じゃん・けん</string>
     <string name="back_text">戻る</string>
-    <string name="result_win">あなたの勝ちです</string>
-    <string name="result_lose">コンピュータの勝ちです</string>
-    <string name="result_draw">あいこです</string>
+    <string name="result_win">あなたの勝ち！</string>
+    <string name="result_lose">あなたの負け！</string>
+    <string name="result_draw">あいこ！</string>
     <string name="count">ゲーム　〇回目</string>
     <string name="play">●PLAY GAME !!●</string>
     <string name="checkbox">後出し！</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="result">ポン！</string>
 </resources>
