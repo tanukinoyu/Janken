@@ -11,7 +11,6 @@ import android.view.MenuItem
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_result.*
-import javax.xml.parsers.SAXParser
 
 class ResultActivity : AppCompatActivity() {
 

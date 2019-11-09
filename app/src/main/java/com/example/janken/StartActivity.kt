@@ -1,6 +1,5 @@
 package com.example.janken
 
-import android.content.Context
 import android.content.Intent
 import android.media.AudioAttributes
 import android.media.AudioManager
@@ -11,8 +10,6 @@ import android.os.Handler
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import kotlinx.android.synthetic.main.activity_start.*
 
 class StartActivity : AppCompatActivity() {
